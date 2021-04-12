@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\Tile.cs" />
      <Compile Include="Assets\Scripts\TowerSpawner.cs" />
      <Compile Include="Assets\Scripts\TowerWeapon.cs" />
+     <Compile Include="Assets\TowerScript.cs" />
      <Compile Include="Assets\WaveSpawner.cs" />
      <Compile Include="Assets\waypoints.cs" />
  <Reference Include="UnityEngine">

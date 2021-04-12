@@ -2,8 +2,7 @@
 
 public class ObjectDetector : MonoBehaviour
 {
-    [SerializeField]
-    private TowerSpawner towerSpawner;
+    public Transform towerHead;
 
     private Camera mainCamera;
     private Ray ray;
@@ -20,8 +19,22 @@ public class ObjectDetector : MonoBehaviour
             ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
-                towerSpawner.SpawnTower(hit.transform);
+                SpawnTower(hit.transform);
             }
         }
+    }
+    public void SpawnTower(Transform tileTransform)
+    {
+        Tile tile = tileTransform.GetComponent<Tile>();
+
+        if (tile.IsBuildTower == true)
+        {
+            return;
+        }
+
+        tile.IsBuildTower = true;
+
+        Instantiate(towerHead, tileTransform.position, Quaternion.identity);
+
     }
 }

@@ -1,10 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
 public class EnemyScript : MonoBehaviour
 {
     public float speed = 1f;
+    public Transform[] healthBar;
+    private int healthMax = 5;
+    private int health;
 
     private Transform target;
     private int waypointIndexPoint1 = 0;
@@ -17,8 +22,13 @@ public class EnemyScript : MonoBehaviour
     private bool spawnedAtPoint3 = false;
     private bool spawnedAtPoint4 = false;
 
+
+
+    
+
     void Start()
     {
+
         //스폰 장소에 따라 이니셜 타겟 웨이포인트 설정
         if (transform.position == GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<WaveSpawner>().spawnPoint1.position)
         {
@@ -43,10 +53,26 @@ public class EnemyScript : MonoBehaviour
             target = GameObject.FindGameObjectWithTag("TempWaypoint2").transform;
             spawnedAtPoint4 = true;
         }
+
+        //체력 바 설정
+        this.health = healthMax;
+        //체력바 회전각 확인
+        healthBar[0].rotation = Quaternion.Euler(0, 0, 0);
+        healthBar[1].rotation = Quaternion.Euler(0, 0, 0);
+
+
     }
+
+
+
+
 
     void Update()
     {
+
+        // 체력 바 업데이트
+        HealthBarUpdate();
+
         //이동 & way point loop 
         Vector2 dir = target.position - transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
@@ -167,4 +193,30 @@ public class EnemyScript : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
+    void HealthBarUpdate()
+    {
+        float ratio = health / healthMax; //체력 비율
+
+        //피해를 입으면 체력바 표시
+        if (ratio < 1)
+        {
+            healthBar[0].gameObject.SetActive(true);
+            healthBar[1].gameObject.SetActive(true);
+        }
+
+        //체력바 위치 재설정
+        if (healthBar[0].gameObject.activeSelf)
+        {
+            healthBar[0].localScale = new Vector3(ratio * 0.6f, 0.05f, 1); //크기 조절
+            healthBar[1].localScale = new Vector3(0.6f, 0.05f, 1); //크기 조절
+            
+            healthBar[0].position = transform.position + new Vector3(-(1 - ratio) * 0.3f, 0.3f, 0);
+            healthBar[1].position = transform.position + new Vector3(-(1 - ratio) * 0.3f, 0.3f, 0);//위치 조절
+
+        }
+    }
+    public void OnDie()
+    {
+        Destroy(this.gameObject);
+    }
 }
