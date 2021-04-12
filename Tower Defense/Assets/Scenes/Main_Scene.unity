@@ -684,7 +684,7 @@ MonoBehaviour:
   spawnPoint3: {fileID: 529548344}
   spawnPoint4: {fileID: 1983621455}
   waveCountDown: 5
-  waveCountdownText: {fileID: 0}
+  waveCountdownText: {fileID: 1699225604}
 --- !u!4 &654037446
 Transform:
   m_ObjectHideFlags: 0
