@@ -55,19 +55,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\BulletScript.cs" />
      <Compile Include="Assets\EnemyScript.cs" />
+     <Compile Include="Assets\Projectile.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\EnemyHP.cs" />
      <Compile Include="Assets\Scripts\EnemyHPViewer.cs" />
      <Compile Include="Assets\Scripts\EnemySpawner.cs" />
      <Compile Include="Assets\Scripts\Movement2D.cs" />
      <Compile Include="Assets\Scripts\ObjectDetector.cs" />
-     <Compile Include="Assets\Scripts\Projectile.cs" />
      <Compile Include="Assets\Scripts\SliderPositionAutoSetter.cs" />
      <Compile Include="Assets\Scripts\Tile.cs" />
      <Compile Include="Assets\Scripts\TowerSpawner.cs" />
      <Compile Include="Assets\Scripts\TowerWeapon.cs" />
      <Compile Include="Assets\TowerScript.cs" />
+     <Compile Include="Assets\UITabs.cs" />
      <Compile Include="Assets\WaveSpawner.cs" />
      <Compile Include="Assets\waypoints.cs" />
  <Reference Include="UnityEngine">

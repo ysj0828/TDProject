@@ -22,6 +22,8 @@ public class EnemyScript : MonoBehaviour
     private bool spawnedAtPoint3 = false;
     private bool spawnedAtPoint4 = false;
 
+    private bool isDead = false;
+
 
 
     
@@ -214,6 +216,20 @@ public class EnemyScript : MonoBehaviour
             healthBar[1].position = transform.position + new Vector3(-(1 - ratio) * 0.3f, 0.3f, 0);//위치 조절
 
         }
+    }
+    public void TakeDamage(int damage)
+    {
+        
+        if (this.isDead == true) return;
+
+        this.health -= damage;
+
+        if (this.health <= 0)
+        {
+            this.isDead = true;
+            this.OnDie();
+        }
+        
     }
     public void OnDie()
     {
