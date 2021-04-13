@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - TempWaypoint1
   - TempWaypoint2
+  - Turret
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Turret
   - 
   - 
   - 
